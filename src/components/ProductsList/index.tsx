@@ -1,54 +1,85 @@
+import { Product } from "@/types/products";
 import React from "react";
-import {
-  ActivityIndicator,
-  FlatList,
-  StyleSheet,
-  Text,
-  View,
-} from "react-native";
-import { Products } from "../../types/products";
+import { Image, StyleSheet, Text, TouchableOpacity, View } from "react-native";
 
 type Props = {
-  data: Products[];
+  item: Product;
+  onPress?: (id: number) => void;
   loading?: boolean;
 };
 
-export const ProductsList = ({ data, loading }: Props) => {
-  if (loading) {
-    return (
-      <View style={styles.center}>
-        <ActivityIndicator size="large" />
-        <Text>Carregando...</Text>
-      </View>
-    );
-  }
-
+export const ProductCard = ({ item, loading, onPress }: Props) => {
   return (
-    <FlatList
-      data={data}
-      keyExtractor={(item) => String(item.id)}
-      renderItem={({ item }) => (
-        <View style={styles.item}>
-          <Text style={styles.title}>{item.title}</Text>
-        </View>
-      )}
-    />
+    <TouchableOpacity
+      style={styles.card}
+      onPress={() => onPress?.(item.id)}
+      activeOpacity={0.8}
+    >
+      <Image source={{ uri: item.image }} style={styles.image} />
+
+      <View style={styles.content}>
+        <Text style={styles.category}>{item.category}</Text>
+
+        <Text style={styles.title} numberOfLines={2}>
+          {item.title}
+        </Text>
+
+        <Text style={styles.price}>R$ {item.price.toFixed(2)}</Text>
+      </View>
+    </TouchableOpacity>
   );
 };
 
 const styles = StyleSheet.create({
-  center: {
-    flex: 1,
-    justifyContent: "center",
-    alignItems: "center",
+  card: {
+    backgroundColor: "#fff",
+    borderRadius: 12,
+    marginBottom: 16,
+    overflow: "hidden",
+    elevation: 3, // Android
+    shadowColor: "#000", // iOS
+    shadowOpacity: 0.1,
+    shadowRadius: 6,
+    shadowOffset: { width: 0, height: 3 },
   },
-  item: {
-    padding: 16,
-    borderBottomWidth: 1,
-    borderBottomColor: "#ddd",
+  image: {
+    width: "100%",
+    height: 180,
+    resizeMode: "contain",
+    backgroundColor: "#f5f5f5",
+  },
+  content: {
+    padding: 12,
+  },
+  category: {
+    fontSize: 12,
+    color: "#888",
+    marginBottom: 4,
+    textTransform: "capitalize",
   },
   title: {
-    fontWeight: "bold",
     fontSize: 16,
+    fontWeight: "600",
+    color: "#333",
+    marginBottom: 8,
+  },
+  price: {
+    fontSize: 18,
+    fontWeight: "bold",
+    color: "#2e7d32",
+    marginBottom: 8,
+  },
+  ratingContainer: {
+    flexDirection: "row",
+    alignItems: "center",
+  },
+  rating: {
+    fontSize: 14,
+    fontWeight: "600",
+    marginRight: 4,
+  },
+  count: {
+    fontSize: 12,
+    color: "#777",
   },
 });
