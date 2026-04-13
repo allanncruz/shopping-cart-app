@@ -1,18 +1,22 @@
 import React, { useEffect, useState } from "react";
-import { FlatList, Text, View } from "react-native";
-import { getPosts } from "../services/postApi";
-import { Post } from "../types/post";
+import { StyleSheet, View } from "react-native";
+import { ProductsList } from "../components/ProductsList";
+import { getProducts } from "../services/productsApi";
+import { Products } from "../types/products";
 
 export default function Index() {
-  const [posts, setPosts] = useState<Post[]>([]);
+  const [posts, setPosts] = useState<Products[]>([]);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const load = async () => {
       try {
-        const response = await getPosts();
+        const response = await getProducts();
         setPosts(response);
       } catch (error) {
         console.error(error);
+      } finally {
+        setLoading(false);
       }
     };
 
@@ -20,14 +24,14 @@ export default function Index() {
   }, []);
 
   return (
-    <FlatList
-      data={posts}
-      keyExtractor={(item, index) => String(item.id ?? index)}
-      renderItem={({ item }) => (
-        <View>
-          <Text>{item.title}</Text>teste
-        </View>
-      )}
-    />
+    <View style={styles.container}>
+      <ProductsList data={posts} loading={loading} />
+    </View>
   );
 }
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+  },
+});
