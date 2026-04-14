@@ -29,7 +29,7 @@ export const ProductCard = ({ item, loading, onPress }: Props) => {
 
         <Text style={styles.price}>R$ {item.price.toFixed(2)}</Text>
       </View>
-      <TouchableOpacity style={styles.button} onPress={() => addItem(item.id)}>
+      <TouchableOpacity style={styles.button} onPress={() => addItem(item)}>
         <Text style={styles.buttonText}>Adicionar</Text>
       </TouchableOpacity>
     </TouchableOpacity>

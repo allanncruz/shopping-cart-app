@@ -1,16 +1,21 @@
 import { useCart } from "@/context/CartContext";
-import { StyleSheet, Text, View } from "react-native";
+import { useRouter } from "expo-router";
+import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
 
 export function Header() {
   const { count } = useCart();
+  const router = useRouter();
 
   return (
     <View style={styles.container}>
       <Text style={styles.logo}>Shopping Cart</Text>
 
-      <View style={styles.cart}>
+      <TouchableOpacity
+        style={styles.cart}
+        onPress={() => router.push("/cart")}
+      >
         <Text style={styles.cartText}>🛒 {count}</Text>
-      </View>
+      </TouchableOpacity>
     </View>
   );
 }
