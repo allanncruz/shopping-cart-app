@@ -30,7 +30,7 @@ export const ProductCard = ({ item, loading, onPress }: Props) => {
         <Text style={styles.price}>R$ {item.price.toFixed(2)}</Text>
       </View>
       <TouchableOpacity style={styles.button} onPress={() => addItem(item)}>
-        <Text style={styles.buttonText}>Adicionar</Text>
+        <Text style={styles.buttonText}>🛒 Adicionar</Text>
       </TouchableOpacity>
     </TouchableOpacity>
   );
@@ -39,8 +39,7 @@ export const ProductCard = ({ item, loading, onPress }: Props) => {
 const styles = StyleSheet.create({
   card: {
     backgroundColor: "#fff",
-    borderRadius: 12,
-    marginBottom: 16,
+    marginBottom: 36,
     overflow: "hidden",
     elevation: 3, // Android
     shadowColor: "#000", // iOS
@@ -70,10 +69,8 @@ const styles = StyleSheet.create({
     marginBottom: 8,
   },
   price: {
-    fontSize: 18,
+    fontSize: 22,
     fontWeight: "bold",
-    color: "#2e7d32",
-    marginBottom: 8,
   },
   ratingContainer: {
     flexDirection: "row",
@@ -89,12 +86,15 @@ const styles = StyleSheet.create({
     color: "#777",
   },
   button: {
-    backgroundColor: "#111",
-    padding: 8,
-    borderRadius: 6,
-    alignSelf: "flex-start",
+    backgroundColor: "#017bff",
+    padding: 12,
+    alignSelf: "flex-end",
+    marginRight: 10,
+    position: 'relative',
+    top: -10,
   },
   buttonText: {
     color: "#fff",
+    fontSize: 12,
   },
 });

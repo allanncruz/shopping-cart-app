@@ -27,8 +27,9 @@ export default function Index() {
   }, []);
 
   return (
-    <View style={styles.container}>
+    <View>
       <FlatList
+        style={styles.container}
         data={products}
         keyExtractor={(item) => String(item.id)}
         renderItem={({ item }) => (
@@ -52,6 +53,5 @@ export default function Index() {
 const styles = StyleSheet.create({
   container: {
     display: "flex",
-    paddingTop: 50,
   },
 });
