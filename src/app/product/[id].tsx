@@ -1,12 +1,20 @@
 import { Stack, useLocalSearchParams } from "expo-router";
 import { useEffect, useState } from "react";
-import { ActivityIndicator, Image, StyleSheet, Text, View } from "react-native";
+import {
+  ActivityIndicator,
+  Image,
+  StyleSheet,
+  Text,
+  TouchableOpacity,
+  View,
+} from "react-native";
+import { useCart } from "../../context/CartContext";
 import { getProductById } from "../../services/productsApi";
 import { Product } from "../../types/products";
 
 export default function ProductDetail() {
   const { id } = useLocalSearchParams<{ id: string }>();
-
+  const { addItem } = useCart();
   const [product, setProduct] = useState<Product | null>(null);
   const [loading, setLoading] = useState(true);
 
@@ -57,6 +65,12 @@ export default function ProductDetail() {
           <Text style={styles.rating}>
             ⭐ {product.rating.rate} ({product.rating.count} avaliações)
           </Text>
+          <TouchableOpacity
+            style={styles.button}
+            onPress={() => addItem(product)}
+          >
+            <Text style={styles.buttonText}>🛒 Adicionar</Text>
+          </TouchableOpacity>
         </View>
       )}
     </>
@@ -103,5 +117,17 @@ const styles = StyleSheet.create({
   rating: {
     fontSize: 14,
     fontWeight: "bold",
+  },
+
+  button: {
+    backgroundColor: "#017bff",
+    padding: 12,
+    marginBottom: 10,
+    marginTop: 40,
+  },
+  buttonText: {
+    color: "#fff",
+    fontSize: 12,
+    textAlign: "center",
   },
 });
