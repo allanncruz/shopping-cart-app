@@ -1,4 +1,4 @@
-# GT League App
+# Shopping Cart App
 
 Projeto prático desenvolvido com **React Native + Expo Router** com objetivo de demonstrar consumo de API, navegação, estado global e arquitetura escalável.
 
