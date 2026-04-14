@@ -4,8 +4,8 @@ import { Image, StyleSheet, Text, TouchableOpacity, View } from "react-native";
 
 type Props = {
   item: Product;
-  onPress?: (id: number) => void;
   loading?: boolean;
+  onPress: (id: number) => void;
 };
 
 export const ProductCard = ({ item, loading, onPress }: Props) => {
