@@ -6,27 +6,27 @@ Projeto prático desenvolvido com **React Native + Expo Router** com objetivo de
 
 ## 📱 Funcionalidades
 
-* Listagem de produtos via API pública
-* Tela de detalhe do produto
-* Carrinho global com contador no header
-* Adicionar e remover itens do carrinho
-* Cálculo de total do carrinho
-* Header global reutilizável
-* Navegação com rotas dinâmicas
-* Estrutura modular (services, types, components, context)
+- Listagem de produtos via API pública
+- Tela de detalhe do produto
+- Carrinho global com contador no header
+- Adicionar e remover itens do carrinho
+- Cálculo de total do carrinho
+- Header global reutilizável
+- Navegação com rotas dinâmicas
+- Estrutura modular (services, types, components, context)
 
 ---
 
 ## 🧠 Conceitos aplicados
 
-* React Native
-* Expo Router (file based routing)
-* Context API (estado global)
-* Consumo de API com fetch
-* Tipagem com TypeScript
-* Componentização reutilizável
-* Separação de responsabilidades
-* Arquitetura escalável para apps mobile
+- React Native
+- Expo Router (file based routing)
+- Context API (estado global)
+- Consumo de API com fetch
+- Tipagem com TypeScript
+- Componentização reutilizável
+- Separação de responsabilidades
+- Arquitetura escalável para apps mobile
 
 ---
 
@@ -42,7 +42,7 @@ src/
  │          └── index.tsx
  │
  ├── components/
- │    ├── ProductCard.tsx
+ │    ├── ProductList.tsx
  │    └── Header.tsx
  │
  ├── context/
@@ -63,7 +63,7 @@ src/
 ### 1. Clonar repositório
 
 ```
-git clone https://github.com/allanncruz/gt-league-app.git
+git clone https://github.com/allanncruz/shopping-cart-app.git
 ```
 
 ### 2. Entrar na pasta
@@ -108,22 +108,22 @@ npx expo start --android
 
 ## 📱 Requisitos de desenvolvimento
 
-* Node.js >= 18
-* npm ou yarn
-* Android Studio instalado
-* Emulator Android configurado
-* Expo CLI (via npx)
+- Node.js >= 18
+- npm ou yarn
+- Android Studio instalado
+- Emulator Android configurado
+- Expo CLI (via npx)
 
 ---
 
 ## 🔧 Ambiente utilizado
 
-* React Native
-* Expo
-* Expo Router
-* TypeScript
-* Android Studio
-* VSCode
+- React Native
+- Expo
+- Expo Router
+- TypeScript
+- Android Studio
+- VSCode
 
 ---
 
@@ -135,8 +135,8 @@ https://fakestoreapi.com/products
 
 Endpoints:
 
-* Listagem: `/products`
-* Detalhe: `/products/:id`
+- Listagem: `/products`
+- Detalhe: `/products/:id`
 
 ---
 
@@ -152,27 +152,27 @@ Endpoints:
 
 ## 📌 Recursos implementados
 
-* Header global reutilizável
-* Badge contador do carrinho
-* Navegação dinâmica por ID
-* Tela de detalhe com fetch
-* Loading state
-* FlatList otimizada
-* Context API global
-* Arquitetura modular
+- Header global reutilizável
+- Badge contador do carrinho
+- Navegação dinâmica por ID
+- Tela de detalhe com fetch
+- Loading state
+- FlatList otimizada
+- Context API global
+- Arquitetura modular
 
 ---
 
 ## 💡 Melhorias futuras
 
-* Persistência com AsyncStorage
-* Quantidade por item
-* Tela de checkout
-* Testes unitários
-* React Query
-* Skeleton loading
-* Dark mode
-* Tabs navigation
+- Persistência com AsyncStorage
+- Quantidade por item
+- Tela de checkout
+- Testes unitários
+- React Query
+- Skeleton loading
+- Dark mode
+- Tabs navigation
 
 ---
 
