@@ -1,6 +1,7 @@
 import { Product } from "@/types/products";
 import React from "react";
 import { Image, StyleSheet, Text, TouchableOpacity, View } from "react-native";
+import { useCart } from "../../context/CartContext";
 
 type Props = {
   item: Product;
@@ -9,6 +10,8 @@ type Props = {
 };
 
 export const ProductCard = ({ item, loading, onPress }: Props) => {
+  const { addItem } = useCart();
+
   return (
     <TouchableOpacity
       style={styles.card}
@@ -26,6 +29,9 @@ export const ProductCard = ({ item, loading, onPress }: Props) => {
 
         <Text style={styles.price}>R$ {item.price.toFixed(2)}</Text>
       </View>
+      <TouchableOpacity style={styles.button} onPress={() => addItem(item.id)}>
+        <Text style={styles.buttonText}>Adicionar</Text>
+      </TouchableOpacity>
     </TouchableOpacity>
   );
 };
@@ -81,5 +87,14 @@ const styles = StyleSheet.create({
   count: {
     fontSize: 12,
     color: "#777",
+  },
+  button: {
+    backgroundColor: "#111",
+    padding: 8,
+    borderRadius: 6,
+    alignSelf: "flex-start",
+  },
+  buttonText: {
+    color: "#fff",
   },
 });

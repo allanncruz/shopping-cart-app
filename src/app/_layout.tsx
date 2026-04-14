@@ -1,17 +1,15 @@
 import { Stack } from "expo-router";
-import { Text } from "react-native";
+import { Header } from "../components/Header";
+import { CartProvider } from "../context/CartContext";
 
 export default function RootLayout() {
   return (
-    <Stack
-      screenOptions={{
-        headerTitle: () => (
-          <Text style={{ fontSize: 18, fontWeight: "bold" }}>
-            Shopping Cart
-          </Text>
-        ),
-        headerTitleAlign: "center",
-      }}
-    />
+    <CartProvider>
+      <Stack
+        screenOptions={{
+          header: () => <Header />,
+        }}
+      />
+    </CartProvider>
   );
 }
