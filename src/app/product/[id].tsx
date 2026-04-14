@@ -1,4 +1,4 @@
-import { useLocalSearchParams } from "expo-router";
+import { Stack, useLocalSearchParams } from "expo-router";
 import { useEffect, useState } from "react";
 import { ActivityIndicator, Image, StyleSheet, Text, View } from "react-native";
 import { getProductById } from "../../services/productsApi";
@@ -22,44 +22,44 @@ export default function ProductDetail() {
       }
     };
 
-    if (id) {
-      loadProduct();
-    }
+    if (id) loadProduct();
   }, [id]);
 
-  if (loading) {
-    return (
-      <View style={styles.center}>
-        <ActivityIndicator size="large" />
-        <Text>Carregando produto...</Text>
-      </View>
-    );
-  }
-
-  if (!product) {
-    return (
-      <View style={styles.center}>
-        <Text>Produto não encontrado</Text>
-      </View>
-    );
-  }
-
   return (
-    <View style={styles.container}>
-      <Image source={{ uri: product.image }} style={styles.image} />
+    <>
+      <Stack.Screen
+        options={{
+          title: product?.title,
+        }}
+      />
 
-      <Text style={styles.title}>{product.title}</Text>
+      {loading ? (
+        <View style={styles.center}>
+          <ActivityIndicator size="large" />
+          <Text>Carregando produto...</Text>
+        </View>
+      ) : !product ? (
+        <View style={styles.center}>
+          <Text>Produto não encontrado</Text>
+        </View>
+      ) : (
+        <View style={styles.container}>
+          <Image source={{ uri: product.image }} style={styles.image} />
 
-      <Text style={styles.price}>R$ {product.price.toFixed(2)}</Text>
+          <Text style={styles.title}>{product.title}</Text>
 
-      <Text style={styles.category}>{product.category}</Text>
+          <Text style={styles.price}>R$ {product.price.toFixed(2)}</Text>
 
-      <Text style={styles.description}>{product.description}</Text>
+          <Text style={styles.category}>{product.category}</Text>
 
-      <Text style={styles.rating}>
-        ⭐ {product.rating.rate} ({product.rating.count} avaliações)
-      </Text>
-    </View>
+          <Text style={styles.description}>{product.description}</Text>
+
+          <Text style={styles.rating}>
+            ⭐ {product.rating.rate} ({product.rating.count} avaliações)
+          </Text>
+        </View>
+      )}
+    </>
   );
 }
 
