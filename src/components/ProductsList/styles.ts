@@ -5,6 +5,7 @@ export const styles = StyleSheet.create({
     backgroundColor: "#fff",
     marginBottom: 36,
     overflow: "hidden",
+    borderRadius: 8,
     elevation: 3, // Android
     shadowColor: "#000", // iOS
     shadowOpacity: 0.1,
@@ -54,7 +55,8 @@ export const styles = StyleSheet.create({
     padding: 12,
     alignSelf: "flex-end",
     marginRight: 10,
-    position: 'relative',
+    position: "relative",
+    borderRadius: 8,
     top: -10,
   },
   buttonText: {
