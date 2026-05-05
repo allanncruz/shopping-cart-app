@@ -69,7 +69,7 @@ git clone https://github.com/allanncruz/shopping-cart-app.git
 ### 2. Entrar na pasta
 
 ```
-cd gt-league-app
+cd shopping-cart-app
 ```
 
 ### 3. Instalar dependências
